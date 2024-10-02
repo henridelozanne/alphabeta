@@ -1,18 +1,41 @@
 <template>
   <div class="home">
-    <div>Generated word : {{ generatedWord }}</div>
-    <button @click="generateRandomWord">Generate</button>
+    <div class="result-box">
+      <span>{{ generatedWord }}</span>
+    </div>
+
+    <v-slider
+      v-model="vowelsPercentage"
+      min="0" max="100"
+      thumb-label
+      step="10"
+      show-ticks
+      label="Vowel percentage"
+    />
+
+    <v-number-input
+      v-model="lettersQuantity"
+      :max="15"
+      :min="1"
+      label="Number of letters"
+      :hide-input="false"
+      :inset="false"
+    />
+
+    <v-btn @click="generateRandomWord">
+      Generate
+    </v-btn>
   </div>
 </template>
 
 <script setup lang="ts">
 import constants from '@/assets/constants.json';
 
-const generatedWord : Ref<string> = ref('');
+const generatedWord: Ref<string> = ref('');
 const lettersQuantity: Ref<number> = ref(4);
-const vowelsPercentage: Ref<number> = ref(0.5);
+const vowelsPercentage: Ref<number> = ref(50);
 
-const getRandomInteger = (length: number):       number   => Math.floor(Math.random() * length);
+const getRandomInteger = (length: number): number => Math.floor(Math.random() * length);
 const getRandomVowel = () : string => constants.vowels[getRandomInteger(constants.vowels.length)];
 const getRandomConsonant = () : string => constants.consonants[getRandomInteger(constants.consonants.length)];
 
@@ -22,7 +45,7 @@ const formatWord = (word: string[]) : string => {
 };
 
 const generateRandomWord = () : void => {
-  const vowelsQuantity = Math.floor(lettersQuantity.value * vowelsPercentage.value);
+  const vowelsQuantity = Math.floor(lettersQuantity.value * (vowelsPercentage.value / 100));
   const consonantsQuantity = lettersQuantity.value - vowelsQuantity;
 
   const vowels: string[] = [];
@@ -45,3 +68,21 @@ const generateRandomWord = () : void => {
 };
 
 </script>
+
+<style lang="scss" scoped>
+.home {
+  margin: 50px 50px 0;
+
+  .result-box {
+    border: 1px solid black;
+    min-height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    span {
+      font-size: 2.7rem;
+    }
+  }
+}
+</style>

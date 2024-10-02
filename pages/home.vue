@@ -32,11 +32,7 @@ const generateRandomWord = () : void => {
 
   const consonants: string[] = [];
   for (let i = 0; i < consonantsQuantity; i += 1) {
-          consonants.push(getRandomConsonant());
-
-
-
-
+    consonants.push(getRandomConsonant());
   }
 
   const allLetters = [...vowels, ...consonants];

@@ -22,6 +22,21 @@
       :inset="false"
     />
 
+    <v-switch v-model="specificLettersEnabled" label="Add specific letters" />
+
+    <div v-if="specificLettersEnabled">
+      <v-text-field
+        v-model="specificLetters" label="Letters wanted"
+        :maxlength="lettersQuantity - 1"
+      />
+
+      <v-radio-group v-model="specificLettersPosition" inline>
+        <v-radio label="Anywhere" value="anywhere" />
+        <v-radio label="Start" value="start" />
+        <v-radio label="End" value="end" />
+      </v-radio-group>
+    </div>
+
     <v-btn @click="generateRandomWord">
       Generate
     </v-btn>
@@ -35,19 +50,24 @@ import constants from '@/assets/constants.json';
 const generatedWord: Ref<string> = ref('');
 const lettersQuantity: Ref<number> = ref(5);
 const vowelsPercentage: Ref<number> = ref(40);
+const specificLetters: Ref<string> = ref('');
+const specificLettersEnabled: Ref<boolean> = ref(false);
+const specificLettersPosition: Ref<string> = ref('anywhere');
 
 const getRandomInteger = (length: number): number => Math.floor(Math.random() * length);
 const getRandomVowel = () : string => constants.vowels[getRandomInteger(constants.vowels.length)];
 const getRandomConsonant = () : string => constants.consonants[getRandomInteger(constants.consonants.length)];
 
 const formatWord = (word: string[]) : string => {
-  const capitalized = [word[0].toUpperCase(), ...word.slice(1)];
-  return capitalized.join('');
+  const joined = word.join('');
+  return joined.charAt(0).toUpperCase() + joined.slice(1);
 };
 
+const vowelsInSpecificLetters = computed(() => specificLetters.value.match(/[aeiouy]/gi)?.length || 0);
+
 const generateRandomWord = () : void => {
-  const vowelsQuantity = Math.floor(lettersQuantity.value * (vowelsPercentage.value / 100));
-  const consonantsQuantity = lettersQuantity.value - vowelsQuantity;
+  const vowelsQuantity = Math.floor(lettersQuantity.value * (vowelsPercentage.value / 100)) - vowelsInSpecificLetters.value;
+  const consonantsQuantity = lettersQuantity.value - vowelsQuantity - specificLetters.value.length;
 
   const vowels: string[] = [];
   for (let i = 0; i < vowelsQuantity; i += 1) {
@@ -59,12 +79,25 @@ const generateRandomWord = () : void => {
     consonants.push(getRandomConsonant());
   }
 
-  const allLetters = [...vowels, ...consonants];
+  const allLetters = [
+    ...vowels,
+    ...consonants,
+    ...(specificLettersEnabled.value && specificLettersPosition.value === 'anywhere' ? [specificLetters.value] : [])
+  ];
 
   const word : string[] = [];
   for (let i = 0; i < lettersQuantity.value; i += 1) {
     word.push(allLetters.splice(getRandomInteger(allLetters.length), 1)[0]);
   }
+
+  if (specificLettersEnabled.value) {
+    if (specificLettersPosition.value === 'start') {
+      word.unshift(specificLetters.value);
+    } else if (specificLettersPosition.value === 'end') {
+      word.push(specificLetters.value);
+    }
+  }
+
   generatedWord.value = formatWord(word);
 };
 

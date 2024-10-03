@@ -29,11 +29,12 @@
 </template>
 
 <script setup lang="ts">
+/* eslint max-len: 0 */
 import constants from '@/assets/constants.json';
 
 const generatedWord: Ref<string> = ref('');
-const lettersQuantity: Ref<number> = ref(4);
-const vowelsPercentage: Ref<number> = ref(50);
+const lettersQuantity: Ref<number> = ref(5);
+const vowelsPercentage: Ref<number> = ref(40);
 
 const getRandomInteger = (length: number): number => Math.floor(Math.random() * length);
 const getRandomVowel = () : string => constants.vowels[getRandomInteger(constants.vowels.length)];

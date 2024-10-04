@@ -188,6 +188,7 @@ const deleteLocalStorage = () : void => {
     justify-content: center;
     align-items: center;
     position: relative;
+    margin-bottom: 30px;
 
     span {
       font-size: 2.7rem;
@@ -209,6 +210,7 @@ const deleteLocalStorage = () : void => {
   .saved-words-wrapper {
     border: 1px solid black;
     min-height: 100px;
+    margin-top: 30px;
 
     .saved-word .saved-word-close-icon {
       display: none;

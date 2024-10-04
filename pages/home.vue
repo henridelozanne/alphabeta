@@ -82,6 +82,7 @@
 <script setup lang="ts">
 /* eslint max-len: 0 */
 import constants from '@/assets/constants.json';
+import { onMounted } from 'vue';
 
 const generatedWords: Ref<string[]> = ref([]);
 const lettersQuantity: Ref<number> = ref(5);
@@ -91,6 +92,10 @@ const specificLettersEnabled: Ref<boolean> = ref(false);
 const specificLettersPosition: Ref<string> = ref('anywhere');
 const currentWordIndex: Ref<number> = ref(0);
 const savedWords: Ref<string[]> = ref([]);
+
+onMounted(() => {
+  savedWords.value = localStorage.getItem('savedWords')?.split(',') || [];
+});
 
 const getRandomInteger = (length: number): number => Math.floor(Math.random() * length);
 const getRandomVowel = () : string => constants.vowels[getRandomInteger(constants.vowels.length)];
@@ -150,10 +155,24 @@ const displayNextWord = () : void => {
 
 const saveWord = () : void => {
   savedWords.value.push(generatedWords.value[currentWordIndex.value]);
+  updateLocalStorage();
 };
 
 const deleteSavedWord = (word: string) : void => {
   savedWords.value.splice(savedWords.value.indexOf(word), 1);
+  if (!savedWords.value.length) {
+    deleteLocalStorage();
+  } else {
+    updateLocalStorage();
+  }
+};
+
+const updateLocalStorage = () : void => {
+  localStorage.setItem('savedWords', savedWords.value.join());
+};
+
+const deleteLocalStorage = () : void => {
+  localStorage.removeItem('savedWords');
 };
 
 </script>

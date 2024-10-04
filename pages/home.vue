@@ -62,7 +62,18 @@
     </v-btn>
 
     <div class="saved-words-wrapper">
-      <p>{{ displayedSavedWords }}</p>
+      <v-chip
+        v-for="word in savedWords"
+        :key="word"
+        class="ma-2"
+        variant="outlined"
+      >
+        {{ word }}
+        <v-icon
+          icon="mdi-close-circle" end
+          @click="deleteSavedWord(word)"
+        />
+      </v-chip>
     </div>
   </div>
 </template>
@@ -128,19 +139,21 @@ const generateRandomWord = () : void => {
   currentWordIndex.value = generatedWords.value.length - 1;
 };
 
-const displayPreviousWord = () => {
+const displayPreviousWord = () : void => {
   currentWordIndex.value -= 1;
 };
 
-const displayNextWord = () => {
+const displayNextWord = () : void => {
   currentWordIndex.value += 1;
 };
 
-const saveWord = () => {
+const saveWord = () : void => {
   savedWords.value.push(generatedWords.value[currentWordIndex.value]);
 };
 
-const displayedSavedWords = computed(() => savedWords.value.join());
+const deleteSavedWord = (word: string) : void => {
+  savedWords.value.splice(savedWords.value.indexOf(word), 1);
+};
 
 </script>
 

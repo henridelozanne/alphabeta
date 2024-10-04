@@ -1,7 +1,15 @@
 <template>
   <div class="home">
     <div class="result-box">
-      <span>{{ generatedWord }}</span>
+      <span v-if="generatedWords.length">{{ generatedWords[currentWordIndex] }}</span>
+      <div v-if="generatedWords.length > 1" class="navigation-buttons-wrapper">
+        <v-btn :disabled="currentWordIndex === 0" @click="displayPreviousWord">
+          <v-icon icon="mdi-arrow-left" />
+        </v-btn>
+        <v-btn :disabled="currentWordIndex === generatedWords.length - 1" @click="displayNextWord">
+          <v-icon icon="mdi-arrow-right" />
+        </v-btn>
+      </div>
     </div>
 
     <v-slider
@@ -47,12 +55,13 @@
 /* eslint max-len: 0 */
 import constants from '@/assets/constants.json';
 
-const generatedWord: Ref<string> = ref('');
+const generatedWords: Ref<string[]> = ref([]);
 const lettersQuantity: Ref<number> = ref(5);
 const vowelsPercentage: Ref<number> = ref(40);
 const specificLetters: Ref<string> = ref('');
 const specificLettersEnabled: Ref<boolean> = ref(false);
 const specificLettersPosition: Ref<string> = ref('anywhere');
+const currentWordIndex: Ref<number> = ref(0);
 
 const getRandomInteger = (length: number): number => Math.floor(Math.random() * length);
 const getRandomVowel = () : string => constants.vowels[getRandomInteger(constants.vowels.length)];
@@ -98,7 +107,16 @@ const generateRandomWord = () : void => {
     }
   }
 
-  generatedWord.value = formatWord(word);
+  generatedWords.value.push(formatWord(word));
+  currentWordIndex.value = generatedWords.value.length - 1;
+};
+
+const displayPreviousWord = () => {
+  currentWordIndex.value -= 1;
+};
+
+const displayNextWord = () => {
+  currentWordIndex.value += 1;
 };
 
 </script>
@@ -113,9 +131,16 @@ const generateRandomWord = () : void => {
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 
     span {
       font-size: 2.7rem;
+    }
+
+    .navigation-buttons-wrapper {
+      position: absolute;
+      right: 0;
+      top: 0;
     }
   }
 }

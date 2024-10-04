@@ -65,11 +65,12 @@
       <v-chip
         v-for="word in savedWords"
         :key="word"
-        class="ma-2"
+        class="saved-word ma-2"
         variant="outlined"
       >
         {{ word }}
         <v-icon
+          class="saved-word-close-icon"
           icon="mdi-close-circle" end
           @click="deleteSavedWord(word)"
         />
@@ -189,6 +190,16 @@ const deleteSavedWord = (word: string) : void => {
   .saved-words-wrapper {
     border: 1px solid black;
     min-height: 100px;
+
+    .saved-word .saved-word-close-icon {
+      display: none;
+    }
+
+    .saved-word:hover {
+      .saved-word-close-icon {
+        display: block;
+      }
+    }
   }
 }
 </style>

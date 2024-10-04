@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <div class="result-box">
+    <div class="result-wrapper">
       <span v-if="generatedWords.length">{{ generatedWords[currentWordIndex] }}</span>
       <div v-if="generatedWords.length > 1" class="navigation-buttons-wrapper">
         <v-btn :disabled="currentWordIndex === 0" @click="displayPreviousWord">
@@ -8,6 +8,18 @@
         </v-btn>
         <v-btn :disabled="currentWordIndex === generatedWords.length - 1" @click="displayNextWord">
           <v-icon icon="mdi-arrow-right" />
+        </v-btn>
+      </div>
+
+      <div v-if="generatedWords.length" class="save-wrapper">
+        <v-btn
+          :disabled="savedWords.includes(generatedWords[currentWordIndex])" prepend-icon="mdi-content-save"
+          @click="saveWord"
+        >
+          <template #prepend>
+            <v-icon />
+          </template>
+          Save
         </v-btn>
       </div>
     </div>
@@ -48,6 +60,10 @@
     <v-btn @click="generateRandomWord">
       Generate
     </v-btn>
+
+    <div class="saved-words-wrapper">
+      <p>{{ displayedSavedWords }}</p>
+    </div>
   </div>
 </template>
 
@@ -62,6 +78,7 @@ const specificLetters: Ref<string> = ref('');
 const specificLettersEnabled: Ref<boolean> = ref(false);
 const specificLettersPosition: Ref<string> = ref('anywhere');
 const currentWordIndex: Ref<number> = ref(0);
+const savedWords: Ref<string[]> = ref([]);
 
 const getRandomInteger = (length: number): number => Math.floor(Math.random() * length);
 const getRandomVowel = () : string => constants.vowels[getRandomInteger(constants.vowels.length)];
@@ -119,13 +136,19 @@ const displayNextWord = () => {
   currentWordIndex.value += 1;
 };
 
+const saveWord = () => {
+  savedWords.value.push(generatedWords.value[currentWordIndex.value]);
+};
+
+const displayedSavedWords = computed(() => savedWords.value.join());
+
 </script>
 
 <style lang="scss" scoped>
 .home {
   margin: 50px 50px 0;
 
-  .result-box {
+  .result-wrapper {
     border: 1px solid black;
     min-height: 100px;
     display: flex;
@@ -142,6 +165,17 @@ const displayNextWord = () => {
       right: 0;
       top: 0;
     }
+
+    .save-wrapper {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+    }
+  }
+
+  .saved-words-wrapper {
+    border: 1px solid black;
+    min-height: 100px;
   }
 }
 </style>

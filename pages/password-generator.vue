@@ -5,13 +5,13 @@
 
       <div v-if="generatedPassword.length" class="copy-wrapper">
         <v-btn
-          prepend-icon="mdi-content-copy"
+          :prepend-icon="copySuccessDisplay ? 'mdi-check' : 'mdi-content-copy'"
           @click="copyPassword"
         >
           <template #prepend>
             <v-icon />
           </template>
-          Copy
+          {{ copySuccessDisplay ? 'Copied' : 'Copy' }}
         </v-btn>
       </div>
     </div>
@@ -44,6 +44,7 @@ const generatedPassword: Ref<string> = ref('');
 const charactersQuantity: Ref<number> = ref(13);
 const specialCharactersEnabled: Ref<boolean> = ref(true);
 const numbersEnabled: Ref<boolean> = ref(true);
+const copySuccessDisplay: Ref<boolean> = ref(false);
 
 const getRandomInteger = (length: number): number => Math.floor(Math.random() * length);
 const getRandomLetter = () : string => constants.letters[getRandomInteger(constants.letters.length)];
@@ -106,7 +107,11 @@ const generatePassword = () : void => {
 };
 
 const copyPassword = () : void => {
-  console.log('copy');
+  navigator.clipboard.writeText(generatedPassword.value);
+  copySuccessDisplay.value = true;
+  setTimeout(() => {
+    copySuccessDisplay.value = false;
+  }, 2000);
 };
 
 </script>

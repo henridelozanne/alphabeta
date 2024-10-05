@@ -56,12 +56,14 @@ const numbersPercentage = computed(() => (numbersEnabled.value ? 0.2 : 0));
 
 const letterQuantity = computed(() => Math.floor(charactersQuantity.value * letterPercentage.value));
 const specialCharactersQuantity = computed(() => {
+  if (!specialCharactersEnabled.value) { return 0; }
   if (!numbersEnabled.value) {
     return charactersQuantity.value - letterQuantity.value;
   }
   return Math.floor(charactersQuantity.value * specialCharactersPercentage.value);
 });
 const numbersQuantity = computed(() => {
+  if (!numbersEnabled.value) { return 0; }
   if (!specialCharactersQuantity.value) {
     return charactersQuantity.value - numbersPercentage.value;
   }

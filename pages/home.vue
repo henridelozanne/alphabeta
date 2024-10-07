@@ -80,7 +80,6 @@
 </template>
 
 <script setup lang="ts">
-/* eslint max-len: 0 */
 import constants from '@/assets/constants.json';
 import { onMounted } from 'vue';
 

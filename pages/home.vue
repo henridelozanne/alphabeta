@@ -80,7 +80,6 @@
 </template>
 
 <script setup lang="ts">
-import constants from '@/assets/constants.json';
 import { onMounted } from 'vue';
 
 const generatedWords: Ref<string[]> = ref([]);
@@ -95,10 +94,6 @@ const savedWords: Ref<string[]> = ref([]);
 onMounted(() => {
   savedWords.value = localStorage.getItem('savedWords')?.split(',') || [];
 });
-
-const getRandomInteger = (length: number): number => Math.floor(Math.random() * length);
-const getRandomVowel = () : string => constants.vowels[getRandomInteger(constants.vowels.length)];
-const getRandomConsonant = () : string => constants.consonants[getRandomInteger(constants.consonants.length)];
 
 const formatWord = (word: string[]) : string => {
   const joined = word.join('');

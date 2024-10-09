@@ -5,13 +5,13 @@
 
       <div v-if="generatedPassword.length" class="copy-wrapper">
         <v-btn
-          :prepend-icon="copySuccessDisplay ? 'mdi-check' : 'mdi-content-copy'"
+          :prepend-icon="copySuccessIsDisplayed ? 'mdi-check' : 'mdi-content-copy'"
           @click="copyPassword"
         >
           <template #prepend>
             <v-icon />
           </template>
-          {{ copySuccessDisplay ? 'Copied' : 'Copy' }}
+          {{ copySuccessIsDisplayed ? 'Copied' : 'Copy' }}
         </v-btn>
       </div>
     </div>
@@ -37,36 +37,25 @@
 </template>
 
 <script setup lang="ts">
-import constants from '@/assets/constants.json';
-
 const generatedPassword: Ref<string> = ref('');
 const charactersQuantity: Ref<number> = ref(13);
 const specialCharactersEnabled: Ref<boolean> = ref(true);
 const numbersEnabled: Ref<boolean> = ref(true);
-const copySuccessDisplay: Ref<boolean> = ref(false);
+const copySuccessIsDisplayed: Ref<boolean> = ref(false);
 
-const getRandomInteger = (length: number): number => Math.floor(Math.random() * length);
-const getRandomLetter = () : string => constants.letters[getRandomInteger(constants.letters.length)];
-const getRandomSpecialCharacter = () : string => constants.specialCharacters[getRandomInteger(constants.specialCharacters.length)];
-const getRandomNumber = () : string => constants.numbers[getRandomInteger(constants.numbers.length)];
-
-const letterPercentage = computed(() => 1 - (specialCharactersEnabled.value ? 0.2 : 0) - (numbersEnabled.value ? 0.2 : 0));
+const letterPercentage = computed(() => 1 - specialCharactersPercentage.value - numbersPercentage.value);
 const specialCharactersPercentage = computed(() => (specialCharactersEnabled.value ? 0.2 : 0));
 const numbersPercentage = computed(() => (numbersEnabled.value ? 0.2 : 0));
 
 const letterQuantity = computed(() => Math.floor(charactersQuantity.value * letterPercentage.value));
 const specialCharactersQuantity = computed(() => {
   if (!specialCharactersEnabled.value) { return 0; }
-  if (!numbersEnabled.value) {
-    return charactersQuantity.value - letterQuantity.value;
-  }
+  if (!numbersEnabled.value) { return charactersQuantity.value - letterQuantity.value; }
   return Math.floor(charactersQuantity.value * specialCharactersPercentage.value);
 });
 const numbersQuantity = computed(() => {
   if (!numbersEnabled.value) { return 0; }
-  if (!specialCharactersQuantity.value) {
-    return charactersQuantity.value - numbersPercentage.value;
-  }
+  if (!specialCharactersQuantity.value) { return charactersQuantity.value - numbersPercentage.value; }
   return charactersQuantity.value - letterQuantity.value - specialCharactersQuantity.value;
 });
 
@@ -91,11 +80,7 @@ const generatePassword = () : void => {
     numbers.push(getRandomNumber());
   }
 
-  const allCharacters = [
-    ...letters,
-    ...specialCharacters,
-    ...numbers
-  ];
+  const allCharacters = [...letters, ...specialCharacters, ...numbers];
 
   const password : string[] = [];
   for (let i = 0; i < charactersQuantity.value; i += 1) {
@@ -107,9 +92,9 @@ const generatePassword = () : void => {
 
 const copyPassword = () : void => {
   navigator.clipboard.writeText(generatedPassword.value);
-  copySuccessDisplay.value = true;
+  copySuccessIsDisplayed.value = true;
   setTimeout(() => {
-    copySuccessDisplay.value = false;
+    copySuccessIsDisplayed.value = false;
   }, 2000);
 };
 

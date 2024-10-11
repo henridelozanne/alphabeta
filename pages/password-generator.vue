@@ -4,15 +4,7 @@
       <span v-if="generatedPassword.length">{{ generatedPassword }}</span>
 
       <div v-if="generatedPassword.length" class="copy-wrapper">
-        <v-btn
-          :prepend-icon="copySuccessIsDisplayed ? 'mdi-check' : 'mdi-content-copy'"
-          @click="copyPassword"
-        >
-          <template #prepend>
-            <v-icon />
-          </template>
-          {{ copySuccessIsDisplayed ? 'Copied' : 'Copy' }}
-        </v-btn>
+        <CopyButton :text-to-copy="generatedPassword" />
       </div>
     </div>
 
@@ -41,7 +33,6 @@ const generatedPassword: Ref<string> = ref('');
 const charactersQuantity: Ref<number> = ref(13);
 const specialCharactersEnabled: Ref<boolean> = ref(true);
 const numbersEnabled: Ref<boolean> = ref(true);
-const copySuccessIsDisplayed: Ref<boolean> = ref(false);
 
 const letterPercentage = computed(() => 1 - specialCharactersPercentage.value - numbersPercentage.value);
 const specialCharactersPercentage = computed(() => (specialCharactersEnabled.value ? 0.2 : 0));
@@ -88,14 +79,6 @@ const generatePassword = () : void => {
   }
 
   generatedPassword.value = formatPassword(password);
-};
-
-const copyPassword = () : void => {
-  navigator.clipboard.writeText(generatedPassword.value);
-  copySuccessIsDisplayed.value = true;
-  setTimeout(() => {
-    copySuccessIsDisplayed.value = false;
-  }, 2000);
 };
 
 </script>

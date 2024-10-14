@@ -5,7 +5,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   routeRules: {
     '/': {
-      redirect: '/home'
+      redirect: '/random-word-generator'
     }
   },
   build: {

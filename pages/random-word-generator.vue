@@ -173,8 +173,6 @@ const deleteLocalStorage = () : void => {
 
 <style lang="scss" scoped>
 .home {
-  margin: 50px 50px 0;
-
   .result-wrapper {
     border: 1px solid black;
     min-height: 100px;

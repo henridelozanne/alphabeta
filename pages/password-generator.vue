@@ -85,8 +85,6 @@ const generatePassword = () : void => {
 
 <style lang="scss" scoped>
 .password-generator {
-  margin: 50px 50px 0;
-
   .result-wrapper {
     border: 1px solid black;
     min-height: 100px;

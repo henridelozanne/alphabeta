@@ -1,82 +1,115 @@
 <template>
-  <div class="home">
-    <div class="result-wrapper">
-      <span v-if="generatedWords.length">{{ generatedWords[currentWordIndex] }}</span>
-      <div v-if="generatedWords.length > 1" class="navigation-buttons-wrapper">
-        <v-btn :disabled="currentWordIndex === 0" @click="displayPreviousWord">
-          <v-icon icon="mdi-arrow-left" />
-        </v-btn>
-        <v-btn :disabled="currentWordIndex === generatedWords.length - 1" @click="displayNextWord">
-          <v-icon icon="mdi-arrow-right" />
-        </v-btn>
-      </div>
+  <v-container>
+    <v-row>
+      <v-col class="result-wrapper">
+        <span v-if="generatedWords.length">{{ generatedWords[currentWordIndex] }}</span>
+        <div v-if="generatedWords.length > 1" class="navigation-buttons-wrapper">
+          <v-btn :disabled="currentWordIndex === 0" @click="displayPreviousWord">
+            <v-icon icon="mdi-arrow-left" />
+          </v-btn>
+          <v-btn :disabled="currentWordIndex === generatedWords.length - 1" @click="displayNextWord">
+            <v-icon icon="mdi-arrow-right" />
+          </v-btn>
+        </div>
 
-      <div v-if="generatedWords.length" class="save-wrapper">
-        <v-btn
-          :disabled="savedWords.includes(generatedWords[currentWordIndex])" prepend-icon="mdi-content-save"
-          @click="saveWord"
-        >
-          <template #prepend>
-            <v-icon />
-          </template>
-          Save
-        </v-btn>
-      </div>
-    </div>
+        <div v-if="generatedWords.length" class="save-wrapper">
+          <v-btn
+            :disabled="savedWords.includes(generatedWords[currentWordIndex])" prepend-icon="mdi-content-save"
+            @click="saveWord"
+          >
+            <template #prepend>
+              <v-icon />
+            </template>
+            Save
+          </v-btn>
+        </div>
+      </v-col>
+    </v-row>
 
-    <v-slider
-      v-model="vowelsPercentage"
-      min="0" max="100"
-      thumb-label
-      step="10"
-      show-ticks
-      label="Vowel percentage"
-    />
-
-    <v-number-input
-      v-model="lettersQuantity"
-      :max="15"
-      :min="1"
-      label="Number of letters"
-      :hide-input="false"
-      :inset="false"
-    />
-
-    <v-switch v-model="specificLettersEnabled" label="Add specific letters" />
-
-    <div v-if="specificLettersEnabled">
-      <v-text-field
-        v-model="specificLetters" label="Letters wanted"
-        :maxlength="lettersQuantity - 1"
-      />
-
-      <v-radio-group v-model="specificLettersPosition" inline>
-        <v-radio label="Anywhere" value="anywhere" />
-        <v-radio label="Start" value="start" />
-        <v-radio label="End" value="end" />
-      </v-radio-group>
-    </div>
-
-    <v-btn @click="generateRandomWord">
-      Generate
-    </v-btn>
-
-    <div class="saved-words-wrapper">
-      <v-chip
-        v-for="word in savedWords"
-        :key="word"
-        class="saved-word ma-2"
-        variant="outlined"
+    <v-row>
+      <v-col
+        cols="12"
+        md="6"
       >
-        {{ word }}
-        <v-icon
-          class="saved-word-close-icon"
-          icon="mdi-close-circle" end
-          @click="deleteSavedWord(word)"
+        <v-number-input
+          v-model="lettersQuantity"
+          :max="15"
+          :min="1"
+          label="Number of letters"
+          :hide-input="false"
+          :inset="false"
         />
-      </v-chip>
-    </div>
-  </div>
+      </v-col>
+      <v-col
+        cols="12"
+        md="6" class="vowel-percentage-wrapper"
+      >
+        <v-slider
+          v-model="vowelsPercentage"
+          min="0" max="100"
+          thumb-label
+          step="10"
+          show-ticks
+          label="Vowel percentage"
+        />
+      </v-col>
+    </v-row>
+
+    <v-row>
+      <v-col>
+        <v-switch v-model="specificLettersEnabled" label="Add specific letters" />
+      </v-col>
+    </v-row>
+
+    <v-row v-if="specificLettersEnabled">
+      <v-col
+        cols="12"
+        md="6"
+      >
+        <v-text-field
+          v-model="specificLetters" label="Letters wanted"
+          :maxlength="lettersQuantity - 1"
+        />
+      </v-col>
+      <v-col
+        cols="12"
+        md="6"
+        class="position-wrapper"
+      >
+        <v-radio-group v-model="specificLettersPosition" inline>
+          <v-radio label="Anywhere" value="anywhere" />
+          <v-radio label="Start" value="start" />
+          <v-radio label="End" value="end" />
+        </v-radio-group>
+      </v-col>
+    </v-row>
+
+    <v-row>
+      <v-col>
+        <v-btn @click="generateRandomWord">
+          Generate
+        </v-btn>
+      </v-col>
+    </v-row>
+
+    <v-row>
+      <v-col class="saved-words-wrapper">
+        <v-chip
+          v-for="word in savedWords"
+          :key="word"
+          class="saved-word ma-2"
+          variant="outlined"
+        >
+          {{ word }}
+          <v-icon
+            class="saved-word-close-icon"
+            icon="mdi-close-circle" end
+            @click="deleteSavedWord(word)"
+          />
+        </v-chip>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script setup lang="ts">
@@ -171,48 +204,64 @@ const deleteLocalStorage = () : void => {
 
 </script>
 
-<style lang="scss" scoped>
-.home {
-  .result-wrapper {
-    border: 1px solid black;
-    min-height: 100px;
+<style lang="scss">
+.result-wrapper {
+  border: 1px solid black;
+  min-height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  span {
+    font-size: 2.7rem;
+  }
+
+  .navigation-buttons-wrapper {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  .save-wrapper {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+}
+
+.vowel-percentage-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.position-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .v-selection-control-group {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    margin-bottom: 30px;
+    justify-content: space-evenly;
+  }
+}
 
-    span {
-      font-size: 2.7rem;
-    }
+.saved-words-wrapper {
+  border: 1px solid black;
+  min-height: 100px;
 
-    .navigation-buttons-wrapper {
-      position: absolute;
-      right: 0;
-      top: 0;
-    }
-
-    .save-wrapper {
-      position: absolute;
-      right: 0;
-      bottom: 0;
-    }
+  .saved-word .saved-word-close-icon {
+    display: none;
   }
 
-  .saved-words-wrapper {
-    border: 1px solid black;
-    min-height: 100px;
-    margin-top: 30px;
-
-    .saved-word .saved-word-close-icon {
-      display: none;
-    }
-
-    .saved-word:hover {
-      .saved-word-close-icon {
-        display: block;
-      }
+  .saved-word:hover {
+    .saved-word-close-icon {
+      display: block;
     }
   }
+}
+
+.v-input__details {
+  display: none;
 }
 </style>

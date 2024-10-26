@@ -15,6 +15,12 @@
 </template>
 
 <style lang="scss">
+@import './assets/css/vuetify-overwrite.scss';
+
+main {
+  background-image: linear-gradient(-20deg, #2b5876 0%, #4e4376 100%);
+}
+
 main > * {
   margin: 50px 50px 0;
 }

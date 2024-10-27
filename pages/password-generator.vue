@@ -1,31 +1,46 @@
 <template>
-  <div class="password-generator">
-    <div class="result-wrapper">
-      <span v-if="generatedPassword.length">{{ generatedPassword }}</span>
+  <v-container class="password-generator">
+    <v-row class="result-wrapper section">
+      <span>{{ generatedPassword }}</span>
 
       <div v-if="generatedPassword.length" class="copy-wrapper">
         <CopyButton :text-to-copy="generatedPassword" />
       </div>
-    </div>
+    </v-row>
 
-    <v-number-input
-      v-model="charactersQuantity"
-      :max="15"
-      :min="1"
-      label="Number of characters"
-      :hide-input="false"
-      :inset="false"
-    />
+    <v-row justify="center">
+      <v-col cols="1" class="generate-action__wrapper">
+        <v-btn class="generate-action__btn" @click="generatePassword">
+          Generate
+        </v-btn>
+      </v-col>
+    </v-row>
 
-    <div>
-      <v-checkbox v-model="specialCharactersEnabled" label="Include special characters" />
-      <v-checkbox v-model="numbersEnabled" label="Include numbers" />
-    </div>
-
-    <v-btn @click="generatePassword">
-      Generate
-    </v-btn>
-  </div>
+    <v-row class="settings section">
+      <v-col>
+        <v-row>
+          <v-col>
+            <v-number-input
+              v-model="charactersQuantity"
+              :max="15"
+              :min="1"
+              label="Number of characters"
+              :hide-input="false"
+              :inset="false"
+            />
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col>
+            <v-checkbox v-model="specialCharactersEnabled" label="Include special characters" />
+          </v-col>
+          <v-col>
+            <v-checkbox v-model="numbersEnabled" label="Include numbers" />
+          </v-col>
+        </v-row>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script setup lang="ts">
@@ -86,13 +101,11 @@ const generatePassword = () : void => {
 <style lang="scss" scoped>
 .password-generator {
   .result-wrapper {
-    border: 1px solid black;
-    min-height: 100px;
+    min-height: 150px;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
-    margin-bottom: 30px;
 
     span {
       font-size: 2.7rem;
@@ -102,6 +115,12 @@ const generatePassword = () : void => {
       position: absolute;
       right: 0;
       bottom: 0;
+    }
+  }
+
+  @media screen and (min-width: 1280px)  {
+    .result-wrapper {
+      min-height: 100px;
     }
   }
 }

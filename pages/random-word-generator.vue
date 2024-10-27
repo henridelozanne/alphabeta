@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-row>
-      <v-col class="result-wrapper">
+      <v-col class="result-wrapper section">
         <span v-if="generatedWords.length" class="generated-word">{{ generatedWords[currentWordIndex] }}</span>
         <div v-if="generatedWords.length > 1" class="navigation-buttons-wrapper">
           <v-btn :disabled="currentWordIndex === 0" @click="displayPreviousWord">
@@ -34,7 +34,7 @@
       </v-col>
     </v-row>
 
-    <v-row class="settings">
+    <v-row class="settings section">
       <v-col>
         <v-row>
           <v-col
@@ -97,7 +97,7 @@
     </v-row>
 
     <v-row>
-      <v-col class="saved-words-wrapper">
+      <v-col class="saved-words-wrapper section">
         <v-chip v-if="!savedWords.length" class="ma-2">
           No saved words for now
         </v-chip>
@@ -211,10 +211,8 @@ const deleteLocalStorage = () : void => {
 
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .result-wrapper {
-  background: white;
-  border-radius: 4px;
   min-height: 150px;
   display: flex;
   justify-content: center;
@@ -252,18 +250,8 @@ const deleteLocalStorage = () : void => {
   }
 }
 
-.generate-action__wrapper {
-  min-width: fit-content;
-
-  .generate-btn {
-    min-width: fit-content;
-  }
-}
-
 .settings {
   padding: 20px;
-  background: white;
-  border-radius: 4px;
 
   .vowel-percentage-wrapper {
     display: flex;
@@ -283,9 +271,6 @@ const deleteLocalStorage = () : void => {
 }
 
 .saved-words-wrapper {
-  background: white;
-  border-radius: 4px;
-
   .saved-word .saved-word-close-icon {
     display: none;
   }

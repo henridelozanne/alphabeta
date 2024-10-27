@@ -9,8 +9,8 @@
     </v-row>
 
     <v-row justify="center">
-      <v-col cols="1" class="generate-action__wrapper">
-        <v-btn class="generate-action__btn" @click="generatePassword">
+      <v-col cols="1" class="centered-action__wrapper">
+        <v-btn @click="generatePassword">
           Generate
         </v-btn>
       </v-col>

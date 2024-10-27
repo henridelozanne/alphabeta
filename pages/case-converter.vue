@@ -1,40 +1,54 @@
 <template>
   <div>
-    <v-textarea v-model="text" label="Original text" />
-    <div>
-      <v-btn @click="convertToUpperCase">
-        Upper case
-      </v-btn>
-      <v-btn @click="convertToLowerCase">
-        Lower case
-      </v-btn>
-      <v-btn @click="convertToCapitalized">
-        Capitalized
-      </v-btn>
-      <v-btn @click="convertToCamelCase">
-        camelCase
-      </v-btn>
-      <v-btn @click="convertToSnakeCase">
-        Snake_case
-      </v-btn>
-      <v-btn @click="convertToKebabCase">
-        kebab-case
-      </v-btn>
-      <v-btn @click="convertToPascalCase">
-        PascalCase
-      </v-btn>
-      <v-btn @click="convertToFlatCase">
-        flatcase
-      </v-btn>
-      <v-btn @click="reverseText">
-        Reverse
-      </v-btn>
-      <v-btn @click="convertToBinary">
-        Binary
-      </v-btn>
-      <CopyButton :text-to-copy="result" />
-    </div>
-    <v-textarea v-model="result" label="Updated text" />
+    <v-row class="section">
+      <v-col>
+        <v-textarea v-model="text" label="Original text" />
+      </v-col>
+    </v-row>
+    <v-row class="section">
+      <v-col class="btn-container">
+        <v-btn @click="convertToUpperCase">
+          Upper case
+        </v-btn>
+        <v-btn @click="convertToLowerCase">
+          Lower case
+        </v-btn>
+        <v-btn @click="convertToCapitalized">
+          Capitalized
+        </v-btn>
+        <v-btn @click="convertToCamelCase">
+          camelCase
+        </v-btn>
+        <v-btn @click="convertToSnakeCase">
+          Snake_case
+        </v-btn>
+        <v-btn @click="convertToKebabCase">
+          kebab-case
+        </v-btn>
+        <v-btn @click="convertToPascalCase">
+          PascalCase
+        </v-btn>
+        <v-btn @click="convertToFlatCase">
+          flatcase
+        </v-btn>
+        <v-btn @click="reverseText">
+          Reverse
+        </v-btn>
+        <v-btn @click="convertToBinary">
+          Binary
+        </v-btn>
+      </v-col>
+    </v-row>
+    <v-row justify="center">
+      <v-col cols="1" class="centered-action__wrapper">
+        <CopyButton :text-to-copy="result" />
+      </v-col>
+    </v-row>
+    <v-row class="section">
+      <v-col>
+        <v-textarea v-model="result" label="Updated text" />
+      </v-col>
+    </v-row>
   </div>
 </template>
 
@@ -85,3 +99,12 @@ const convertToBinary = () : void => {
   result.value = text.value.split('').map(char => char.charCodeAt(0).toString(2)).join(' ');
 };
 </script>
+
+<style scoped>
+.btn-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 12px;
+}
+</style>

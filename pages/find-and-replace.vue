@@ -8,6 +8,11 @@
       v-model="replaced" label="Replace value"
     />
     <v-textarea v-model="result" label="Updated text" />
+    <v-row justify="center">
+      <v-col cols="1" class="centered-action__wrapper">
+        <CopyButton :text-to-copy="result" />
+      </v-col>
+    </v-row>
   </div>
 </template>
 

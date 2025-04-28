@@ -29,12 +29,18 @@
     <v-row justify="center">
       <v-col cols="1" class="centered-action__wrapper">
         <v-btn @click="generateRandomWord">
-          Generate
+          Generate new
         </v-btn>
       </v-col>
     </v-row>
 
     <v-row class="settings section">
+      <v-col cols="12">
+        <v-text tag="h2" class="text-h5 mb-4">
+          Generation settings
+        </v-text>
+      </v-col>
+
       <v-col>
         <v-row>
           <v-col
@@ -96,7 +102,13 @@
       </v-col>
     </v-row>
 
-    <v-row>
+    <v-row class="section">
+      <v-col cols="12">
+        <v-text tag="h2" class="text-h5 mb-4">
+          Saved words
+        </v-text>
+      </v-col>
+
       <v-col class="saved-words-wrapper section">
         <v-chip v-if="!savedWords.length" class="ma-2">
           No saved words for now
@@ -133,6 +145,8 @@ const savedWords: Ref<string[]> = ref([]);
 
 onMounted(() => {
   savedWords.value = localStorage.getItem('savedWords')?.split(',') || [];
+
+  generateRandomWord();
 });
 
 const formatWord = (word: string[]) : string => {
@@ -208,7 +222,6 @@ const updateLocalStorage = () : void => {
 const deleteLocalStorage = () : void => {
   localStorage.removeItem('savedWords');
 };
-
 </script>
 
 <style lang="scss" scoped>
@@ -231,22 +244,22 @@ const deleteLocalStorage = () : void => {
   @media screen and (min-width: 1280px)  {
     .navigation-buttons-wrapper {
       position: absolute;
-      right: 0;
-      top: 0;
+      right: 10px;
+      top: 10px;
       left: unset;
     }
   }
 
   .save-wrapper {
     position: absolute;
-    right: 0;
-    bottom: 0;
+    right: 10px;
+    bottom: 10px;
   }
 }
 
 @media screen and (min-width: 1280px)  {
   .result-wrapper {
-    min-height: 100px;
+    min-height: 150px;
   }
 }
 

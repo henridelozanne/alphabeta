@@ -29,5 +29,6 @@ main > * {
 .section {
   background: rgb(255, 255, 255);
   border-radius: 4px;
+  padding: 20px;
 }
 </style>

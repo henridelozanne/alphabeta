@@ -5,3 +5,9 @@
 .v-input__details {
   display: none;
 }
+
+@media (min-width: 1280px) {
+  .v-container {
+    max-width: 800px !important;
+  }
+}

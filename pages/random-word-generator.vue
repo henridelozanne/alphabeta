@@ -132,8 +132,6 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted } from 'vue';
-
 const generatedWords: Ref<string[]> = ref([]);
 const lettersQuantity: Ref<number> = ref(5);
 const vowelsPercentage: Ref<number> = ref(40);
@@ -254,12 +252,6 @@ const deleteLocalStorage = () : void => {
     position: absolute;
     right: 10px;
     bottom: 10px;
-  }
-}
-
-@media screen and (min-width: 1280px)  {
-  .result-wrapper {
-    min-height: 150px;
   }
 }
 

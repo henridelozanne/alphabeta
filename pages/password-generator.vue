@@ -11,12 +11,18 @@
     <v-row justify="center">
       <v-col cols="1" class="centered-action__wrapper">
         <v-btn @click="generatePassword">
-          Generate
+          Generate new
         </v-btn>
       </v-col>
     </v-row>
 
     <v-row class="settings section">
+      <v-col cols="12">
+        <v-text tag="h2" class="text-h5 mb-4">
+          Generation settings
+        </v-text>
+      </v-col>
+
       <v-col>
         <v-row>
           <v-col>
@@ -96,6 +102,10 @@ const generatePassword = () : void => {
   generatedPassword.value = formatPassword(password);
 };
 
+onMounted(() => {
+  generatePassword();
+});
+
 </script>
 
 <style lang="scss" scoped>
@@ -113,14 +123,8 @@ const generatePassword = () : void => {
 
     .copy-wrapper {
       position: absolute;
-      right: 0;
-      bottom: 0;
-    }
-  }
-
-  @media screen and (min-width: 1280px)  {
-    .result-wrapper {
-      min-height: 100px;
+      right: 10px;
+      bottom: 10px;
     }
   }
 }

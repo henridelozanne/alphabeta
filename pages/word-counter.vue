@@ -59,9 +59,31 @@
 
         <p>Total pages : {{ pageCount }}</p>
 
-        <p>Time to read silently : {{ silentReadingTimeDisplay }}</p>
+        <p>
+          Time to read silently
 
-        <p>Time to read aloud : {{ aloudReadingTimeDisplay }}</p>
+          <v-tooltip class="tooltip-trigger" text="Reading time is estimated based on an average reading speed of 238 words per minute, as referenced from Scholar Within.">
+            <template #activator="{ props }">
+              <v-icon
+                v-bind="props"
+                icon="mdi-information" end
+              />
+            </template>
+          </v-tooltip>
+
+          : {{ silentReadingTimeDisplay }}
+        </p>
+
+        <p>
+          Time to read aloud <v-tooltip class="tooltip-trigger" text="Reading time aloud is estimated based on an average reading speed of 183 words per minute, as referenced from Scholar Within.">
+            <template #activator="{ props }">
+              <v-icon
+                v-bind="props"
+                icon="mdi-information" end
+              />
+            </template>
+          </v-tooltip> : {{ aloudReadingTimeDisplay }}
+        </p>
       </v-col>
     </v-row>
   </v-container>
@@ -101,20 +123,24 @@ const pageCount : ComputedRef<number> = computed(() => {
 const spaceCount : ComputedRef<number> = computed(() => characterList.value.filter(character => character === ' ').length);
 
 // according to https://scholarwithin.com/average-reading-speed#
-const silentReadingTime : ComputedRef<number> = computed(() => Math.ceil(wordCount.value / 238));
-const aloudReadingTime : ComputedRef<number> = computed(() => Math.ceil(wordCount.value / 183));
+const silentReadingTime : number = Math.ceil(wordCount.value / 238);
+const aloudReadingTime : number = Math.ceil(wordCount.value / 183);
 const silentReadingTimeDisplay: ComputedRef<string> = computed(() => {
   if (wordCount.value === 0) { return '-'; }
-  return `${silentReadingTime.value} minute${silentReadingTime.value > 1 ? 's' : ''}`;
+  return `${silentReadingTime} minute${silentReadingTime > 1 ? 's' : ''}`;
 });
 const aloudReadingTimeDisplay: ComputedRef<string> = computed(() => {
   if (wordCount.value === 0) { return '-'; }
-  return `${aloudReadingTime.value} minute${aloudReadingTime.value > 1 ? 's' : ''}`;
+  return `${aloudReadingTime} minute${aloudReadingTime > 1 ? 's' : ''}`;
 });
 </script>
 
 <style lang="scss" scoped>
 .input-with-margin {
   margin-bottom: 15px;
+}
+
+.tooltip-trigger  {
+  // background:
 }
 </style>

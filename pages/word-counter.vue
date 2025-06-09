@@ -1,27 +1,77 @@
 <template>
-  <div>
-    <v-textarea v-model="text" label="Your text here" />
-    <p>Total words : {{ wordCount }}</p>
-    <v-text-field
-      v-model="specificWord" label="Specific word"
-    />
-    <p>Number of occurences of {{ specificWord }} : {{ specificWordCount }}</p>
-    <p>Total characters : {{ characterCount }}</p>
-    <v-text-field
-      v-model="specificCharacter" label="Specific character"
-      maxlength="1"
-    />
-    <p>Number of occurences of "{{ specificCharacter }}" : {{ specificCharacterCount }}</p>
-    <p>Total lines : {{ lineCount }}</p>
-    <p>Total pages : {{ pageCount }}</p>
-    <p>Total spaces : {{ spaceCount }}</p>
-    <p>Time to read silently : {{ silentReadingTimeDisplay }}</p>
-    <p>Time to read aloud : {{ aloudReadingTimeDisplay }}</p>
-  </div>
+  <v-container>
+    <v-row class="section">
+      <v-col>
+        <v-textarea v-model="text" label="Your text here" />
+      </v-col>
+    </v-row>
+
+    <v-row class="section">
+      <v-col cols="12">
+        <v-text tag="h2" class="text-h5 mb-4">
+          Words and characters
+        </v-text>
+      </v-col>
+
+      <v-col cols="12">
+        <p>Total words : {{ wordCount }}</p>
+        <p>Total characters : {{ characterCount }}</p>
+        <p>Total spaces : {{ spaceCount }}</p>
+      </v-col>
+
+      <v-row>
+        <v-col cols="6">
+          <v-switch v-model="specificWordEnabled" label="Count specific word" />
+
+          <div v-if="specificWordEnabled">
+            <v-text-field
+              v-model="specificWord" label="Specific word"
+              class="input-with-margin"
+            />
+            <p>Number of occurences : {{ specificWordCount }}</p>
+          </div>
+        </v-col>
+
+        <v-col cols="6">
+          <v-switch v-model="specificCharacterEnabled" label="Count specific character" />
+
+          <div v-if="specificCharacterEnabled">
+            <v-text-field
+              v-model="specificCharacter" label="Specific character"
+              class="input-with-margin"
+              maxlength="1"
+            />
+            <p>Number of occurences : {{ specificCharacterCount }}</p>
+          </div>
+        </v-col>
+      </v-row>
+    </v-row>
+
+    <v-row class="section">
+      <v-col cols="12">
+        <v-text tag="h2" class="text-h5 mb-4">
+          Lines, pages and reading time
+        </v-text>
+      </v-col>
+
+      <v-col cols="12">
+        <p>Total lines : {{ lineCount }}</p>
+
+        <p>Total pages : {{ pageCount }}</p>
+
+        <p>Time to read silently : {{ silentReadingTimeDisplay }}</p>
+
+        <p>Time to read aloud : {{ aloudReadingTimeDisplay }}</p>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script lang="ts" setup>
-const text : Ref<string> = ref('');
+const text : Ref<string> = ref('Lorem ipsum dolor sit amet. Et consequatur quibusdam in dolores fuga id quia facilis ex quae architecto aut quia rerum qui earum debitis. Qui quod mollitia et pariatur consequatur et consequatur enim non fuga commodi. Et odio nesciunt et quis voluptatibus aut explicabo aliquam ut doloremque expedita aut dolorem maiores.');
+
+const specificWordEnabled = ref(false);
+const specificCharacterEnabled = ref(false);
 
 const wordList: ComputedRef<string[] | null> = computed(() => {
   if (text.value === '') { return null; }
@@ -62,3 +112,9 @@ const aloudReadingTimeDisplay: ComputedRef<string> = computed(() => {
   return `${aloudReadingTime.value} minute${aloudReadingTime.value > 1 ? 's' : ''}`;
 });
 </script>
+
+<style lang="scss" scoped>
+.input-with-margin {
+  margin-bottom: 15px;
+}
+</style>

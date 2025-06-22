@@ -2,7 +2,7 @@
   <v-app-bar :elevation="2">
     <div class="v-toolbar-title">
       <div class="v-toolbar-title__placeholder">
-        ModiText - <span class="current-page">{{ currentPageName }}</span>
+        Moditext - <span class="current-page">{{ currentPageName }}</span>
       </div>
     </div>
     <template v-if="mobile" #prepend>

@@ -15,5 +15,10 @@
 
 <script lang="ts" setup>
 import navItems from '~/utils/navItems';
-
 </script>
+
+<style>
+.v-list-item__prepend {
+  display: block !important;
+}
+</style>

@@ -20,6 +20,7 @@
   },
   "rules": {
     "no-console": 0,
+    "import/extensions": "off",
     "no-undef": 0,
     "semi": [2, "always"],
     "max-len": 0,

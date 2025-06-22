@@ -6,7 +6,7 @@
       </div>
     </div>
     <template v-if="mobile" #prepend>
-      <v-app-bar-nav-icon />
+      <v-app-bar-nav-icon @click="openMobileMenu" />
     </template>
   </v-app-bar>
 </template>
@@ -15,6 +15,12 @@
 import { useDisplay } from 'vuetify';
 
 const { mobile } = useDisplay();
+
+const emit = defineEmits(['toggle-mobile-menu']);
+
+const openMobileMenu = () => {
+  emit('toggle-mobile-menu');
+};
 </script>
 
 <style>

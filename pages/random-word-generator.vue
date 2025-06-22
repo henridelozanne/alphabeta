@@ -1,13 +1,28 @@
 <template>
   <v-container>
+    <v-row class="page-description">
+      <h1>
+        Random word generator
+      </h1>
+      <p>
+        Use this free tool to generate random words of any length and vowel ratio. Great for games, creative writing, or just for fun!
+      </p>
+    </v-row>
+
     <v-row>
       <v-col class="result-wrapper section">
         <span v-if="generatedWords.length" class="generated-word">{{ generatedWords[currentWordIndex] }}</span>
         <div v-if="generatedWords.length > 1" class="navigation-buttons-wrapper">
-          <v-btn :disabled="currentWordIndex === 0" @click="displayPreviousWord">
+          <v-btn
+            :disabled="currentWordIndex === 0" aria-label="Previous word"
+            @click="displayPreviousWord"
+          >
             <v-icon icon="mdi-arrow-left" />
           </v-btn>
-          <v-btn :disabled="currentWordIndex === generatedWords.length - 1" @click="displayNextWord">
+          <v-btn
+            :disabled="currentWordIndex === generatedWords.length - 1" aria-label="Next word"
+            @click="displayNextWord"
+          >
             <v-icon icon="mdi-arrow-right" />
           </v-btn>
         </div>
@@ -15,6 +30,7 @@
         <div v-if="generatedWords.length" class="save-wrapper">
           <v-btn
             :disabled="savedWords.includes(generatedWords[currentWordIndex])" prepend-icon="mdi-content-save"
+            aria-label="Save current word"
             @click="saveWord"
           >
             <template #prepend>
@@ -28,7 +44,7 @@
 
     <v-row justify="center">
       <v-col cols="1" class="centered-action__wrapper">
-        <v-btn @click="generateRandomWord">
+        <v-btn aria-label="Generate new word" @click="generateRandomWord">
           Generate new
         </v-btn>
       </v-col>
@@ -132,6 +148,27 @@
 </template>
 
 <script setup lang="ts">
+useHead({
+  title: 'Moditext - Random Word Generator',
+  link: [
+    {
+      rel: 'canonical',
+      href: 'https://moditext.com/random-word-generator'
+    }
+  ],
+  meta: [
+    { name: 'description', content: 'Generate random words with specific length and vowel percentage. Save your favorite generated words and tweak advanced settings.' },
+    { name: 'robots', content: 'index, follow' },
+    { property: 'og:title', content: 'Moditext - Random Word Generator' },
+    { property: 'og:description', content: 'Generate random words with specific length and vowel percentage. Save your favorite generated words and tweak advanced settings.' },
+    { property: 'og:url', content: 'https://moditext.com/random-word-generator' },
+    { property: 'og:type', content: 'website' },
+    { name: 'twitter:card', content: 'summary_large_image' },
+    { name: 'twitter:title', content: 'Moditext - Random Word Generator' },
+    { name: 'twitter:description', content: 'Generate random words with specific length and vowel percentage.' }
+  ]
+});
+
 const generatedWords: Ref<string[]> = ref([]);
 const lettersQuantity: Ref<number> = ref(5);
 const vowelsPercentage: Ref<number> = ref(40);

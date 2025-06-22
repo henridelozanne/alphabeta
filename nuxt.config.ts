@@ -9,6 +9,16 @@ export default defineNuxtConfig({
       ]
     }
   },
+  sitemap: {
+    siteUrl: 'https://moditext.com',
+    routes: [
+      '/random-word-generator',
+      '/case-converter',
+      '/find-and-replace',
+      '/password-generator',
+      '/word-counter'
+    ]
+  },
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
   routeRules: {
@@ -20,6 +30,7 @@ export default defineNuxtConfig({
     transpile: ['vuetify']
   },
   modules: [
+    '@nuxtjs/sitemap',
     (_options, nuxt) => {
       nuxt.hooks.hook('vite:extendConfig', (config) => {
         // @ts-expect-error

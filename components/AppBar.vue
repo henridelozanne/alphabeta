@@ -2,7 +2,7 @@
   <v-app-bar :elevation="2">
     <div class="v-toolbar-title">
       <div class="v-toolbar-title__placeholder">
-        Moditext - <span class="current-page">{{ currentPageName }}</span>
+        Moditext
       </div>
     </div>
     <template v-if="mobile" #prepend>
@@ -13,22 +13,6 @@
 
 <script setup lang="ts">
 import { useDisplay } from 'vuetify';
-import { useRoute } from 'vue-router';
-
-const route = useRoute();
-
-const currentPageName = computed(() => {
-  const pathParts = route.path.split('/').filter(Boolean);
-  const lastPart = pathParts[pathParts.length - 1] || 'home';
-  return formatPageTitle(lastPart);
-});
-
-function formatPageTitle(slug: string): string {
-  return slug
-    .split('-')
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(' ');
-}
 
 const { mobile } = useDisplay();
 

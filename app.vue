@@ -30,6 +30,24 @@
 </template>
 
 <script setup lang="ts">
+useHead({
+  script: [
+    {
+      async: true,
+      src: 'https://www.googletagmanager.com/gtag/js?id=G-51QC7QPJ63'
+    },
+    {
+      children: `
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-51QC7QPJ63');
+      `,
+      type: 'text/javascript'
+    }
+  ]
+});
+
 const mobileMenuVisible = ref(false);
 
 const toggleMobileMenu = () => {

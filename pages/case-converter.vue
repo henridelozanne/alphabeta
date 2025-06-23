@@ -1,5 +1,14 @@
 <template>
   <v-container>
+    <v-row class="page-description">
+      <h1>
+        Case Converter
+      </h1>
+      <p>
+        Instantly convert text into multiple formats: uppercase, lowercase, capitalized, camelCase, PascalCase, snake_case, kebab-case, flatcase, reversed, or even binary. Perfect for developers and writers who want fast and accurate formatting.
+      </p>
+    </v-row>
+
     <v-row class="section">
       <v-col>
         <v-textarea v-model="text" label="Original text" />
@@ -42,7 +51,10 @@
 
     <v-row class="section">
       <v-col>
-        <v-textarea v-model="result" label="Updated text" />
+        <v-textarea
+          v-model="result" label="Updated text"
+          aria-live="polite"
+        />
       </v-col>
     </v-row>
 
@@ -55,6 +67,42 @@
 </template>
 
 <script lang="ts" setup>
+useHead({
+  title: 'Moditext - Case Converter',
+  link: [
+    {
+      rel: 'canonical',
+      href: 'https://moditext.com/case-converter'
+    }
+  ],
+  meta: [
+    {
+      name: 'description',
+      content: 'Easily convert your text to different formats: uppercase, lowercase, camelCase, PascalCase, snake_case, and more. Try the smart online text transformer.'
+    },
+    {
+      name: 'robots',
+      content: 'index, follow'
+    },
+    {
+      property: 'og:title',
+      content: 'Moditext - Text Case Converter'
+    },
+    {
+      property: 'og:description',
+      content: 'Easily convert your text to different formats: uppercase, lowercase, camelCase, PascalCase, snake_case, and more. Try the smart online text transformer.'
+    },
+    {
+      property: 'og:url',
+      content: 'https://moditext.com/case-converter'
+    },
+    {
+      property: 'og:type',
+      content: 'website'
+    }
+  ]
+});
+
 const text : Ref<string> = ref('This is an example text');
 const result : Ref<string> = ref('');
 const selectedTransformer = ref('');

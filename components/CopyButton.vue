@@ -1,7 +1,7 @@
 <template>
   <v-btn
-    :prepend-icon="copySuccessIsDisplayed ? 'mdi-check' : 'mdi-content-copy'"
-    @click="copyPassword"
+    :prepend-icon="copySuccessIsDisplayed ? 'mdi-check' : 'mdi-content-copy'" aria-label="Copy text"
+    @click="copyText"
   >
     <template #prepend>
       <v-icon />
@@ -20,7 +20,7 @@ const props = defineProps({
 
 const copySuccessIsDisplayed: Ref<boolean> = ref(false);
 
-const copyPassword = () : void => {
+const copyText = () : void => {
   navigator.clipboard.writeText(props.textToCopy);
   copySuccessIsDisplayed.value = true;
   setTimeout(() => {

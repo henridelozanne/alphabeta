@@ -1,7 +1,16 @@
 <template>
   <v-container class="password-generator">
+    <v-row class="page-description">
+      <h1>
+        Password generator
+      </h1>
+      <p>
+        Create strong, secure passwords in seconds. This password generator lets you customize length, special characters, and numbers to meet your security needs. Save time, stay protected.
+      </p>
+    </v-row>
+
     <v-row class="result-wrapper section">
-      <span>{{ generatedPassword }}</span>
+      <span aria-live="polite">{{ generatedPassword }}</span>
 
       <div v-if="generatedPassword.length" class="copy-wrapper">
         <CopyButton :text-to-copy="generatedPassword" />
@@ -50,6 +59,42 @@
 </template>
 
 <script setup lang="ts">
+useHead({
+  title: 'Moditext - Password Generator',
+  link: [
+    {
+      rel: 'canonical',
+      href: 'https://moditext.com/password-generator'
+    }
+  ],
+  meta: [
+    {
+      name: 'description',
+      content: 'Create strong, secure passwords in seconds. This advanced password generator lets you customize length, special characters, and numbers to meet your security needs. Save time, stay protected.'
+    },
+    {
+      name: 'robots',
+      content: 'index, follow'
+    },
+    {
+      property: 'og:title',
+      content: 'Moditext - Password Generator'
+    },
+    {
+      property: 'og:description',
+      content: 'Create strong, secure passwords in seconds. This advanced password generator lets you customize length, special characters, and numbers to meet your security needs. Save time, stay protected.'
+    },
+    {
+      property: 'og:url',
+      content: 'https://moditext.com/password-generator'
+    },
+    {
+      property: 'og:type',
+      content: 'website'
+    }
+  ]
+});
+
 const generatedPassword: Ref<string> = ref('');
 const charactersQuantity: Ref<number> = ref(13);
 const specialCharactersEnabled: Ref<boolean> = ref(true);

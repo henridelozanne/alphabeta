@@ -1,5 +1,14 @@
 <template>
   <v-container>
+    <v-row class="page-description">
+      <h1>
+        Word counter
+      </h1>
+      <p>
+        This comprehensive text analyzer helps you understand your writing better by counting words, characters, lines, and spaces. It also tracks the frequency of any word or character you specify, and estimates the time needed to read your text silently or aloud based on average reading speeds. Use it to improve readability, prepare speeches, or optimize your writing.
+      </p>
+    </v-row>
+
     <v-row class="section">
       <v-col>
         <v-textarea v-model="text" label="Your text here" />
@@ -90,6 +99,53 @@
 </template>
 
 <script lang="ts" setup>
+useHead({
+  title: 'Moditext - Word counter',
+  meta: [
+    {
+      name: 'description',
+      content: 'Analyze your text instantly with our Text Analyzer tool. Count words, characters, lines, and spaces. Track specific word and character occurrences. Estimate reading times silently and aloud for better writing and presentation preparation.'
+    },
+    {
+      name: 'keywords',
+      content: 'text analyzer, word count, character count, reading time, text analysis, writing tool, reading speed, speech preparation'
+    },
+    {
+      name: 'robots',
+      content: 'index, follow'
+    },
+    {
+      property: 'og:type',
+      content: 'website'
+    },
+    {
+      property: 'og:title',
+      content: 'Text Analyzer — Word & Character Count, Reading Time Estimation'
+    },
+    {
+      property: 'og:description',
+      content: 'Analyze your text instantly with our Text Analyzer tool. Count words, characters, lines, and spaces. Track specific word and character occurrences. Estimate reading times silently and aloud for better writing and presentation preparation.'
+    },
+    {
+      name: 'twitter:card',
+      content: 'summary_large_image'
+    },
+    {
+      name: 'twitter:title',
+      content: 'Text Analyzer — Word & Character Count, Reading Time Estimation'
+    },
+    {
+      name: 'twitter:description',
+      content: 'Analyze your text instantly with our Text Analyzer tool. Count words, characters, lines, and spaces. Track specific word and character occurrences. Estimate reading times silently and aloud for better writing and presentation preparation.'
+    }
+  ],
+  link: [
+    { rel: 'canonical', href: 'https://ton-site-exemple.com/text-analyzer' },
+    { rel: 'icon', href: '/favicon.ico' },
+    { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' }
+  ]
+});
+
 const text : Ref<string> = ref('Lorem ipsum dolor sit amet. Et consequatur quibusdam in dolores fuga id quia facilis ex quae architecto aut quia rerum qui earum debitis. Qui quod mollitia et pariatur consequatur et consequatur enim non fuga commodi. Et odio nesciunt et quis voluptatibus aut explicabo aliquam ut doloremque expedita aut dolorem maiores.');
 
 const specificWordEnabled = ref(false);

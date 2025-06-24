@@ -52,9 +52,9 @@
 
     <v-row class="settings section">
       <v-col cols="12">
-        <v-text tag="h2" class="text-h5 mb-4">
+        <h2 class="text-h5">
           Generation settings
-        </v-text>
+        </h2>
       </v-col>
 
       <v-col>
@@ -120,9 +120,9 @@
 
     <v-row class="section">
       <v-col cols="12">
-        <v-text tag="h2" class="text-h5 mb-4">
+        <h2 class="text-h5">
           Saved words
-        </v-text>
+        </h2>
       </v-col>
 
       <v-col class="saved-words-wrapper section">

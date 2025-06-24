@@ -17,9 +17,9 @@
 
     <v-row class="section">
       <v-col cols="12">
-        <v-text tag="h2" class="text-h5 mb-4">
+        <h2 class="text-h5">
           Words and characters
-        </v-text>
+        </h2>
       </v-col>
 
       <v-col cols="12">
@@ -58,9 +58,9 @@
 
     <v-row class="section">
       <v-col cols="12">
-        <v-text tag="h2" class="text-h5 mb-4">
+        <h2 class="text-h5">
           Lines, pages and reading time
-        </v-text>
+        </h2>
       </v-col>
 
       <v-col cols="12">

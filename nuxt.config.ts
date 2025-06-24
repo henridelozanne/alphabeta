@@ -7,8 +7,11 @@ export default defineNuxtConfig({
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.png' }
       ]
-    }
+    },
+    baseURL: '/'
   },
+  ssr: true,
+  nitro: { preset: 'static' },
   sitemap: {
     siteUrl: 'https://moditext.com',
     routes: [

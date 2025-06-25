@@ -20,7 +20,11 @@ export default defineNuxtConfig({
       '/find-and-replace',
       '/password-generator',
       '/word-counter'
-    ]
+    ],
+    xsl: false
+  },
+  site: {
+    url: 'https://www.moditext.com'
   },
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },

@@ -44,6 +44,11 @@ useHead({
         gtag('config', 'G-51QC7QPJ63');
       `,
       type: 'text/javascript'
+    },
+    {
+      src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8604734799570647',
+      async: true,
+      crossorigin: 'anonymous'
     }
   ]
 });

@@ -23,6 +23,11 @@ const navItems = [
     title: 'Find and replace',
     path: '/find-and-replace',
     icon: 'mdi-find-replace'
+  },
+  {
+    title: 'Legal notice',
+    path: '/legal',
+    icon: 'mdi-file-document-outline'
   }
 ];
 

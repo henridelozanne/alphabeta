@@ -5,7 +5,7 @@
         Find and replace
       </h1>
       <p>
-        Quickly search and replace text with our find and replace free tool. Enter your original text, specify the search value and replacement, and get updated text immediately.
+        This find and replace tool lets you quickly search for specific words or phrases in a text and replace them with new ones. It's especially useful for editing documents, cleaning up data, or batch-correcting recurring typos. Whether you’re updating product names, fixing spelling errors, or making consistent replacements across long texts, this tool streamlines the task and saves time. It's fast, intuitive, and eliminates the need for complex manual corrections or regex knowledge.
       </p>
     </v-row>
 

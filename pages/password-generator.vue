@@ -5,7 +5,7 @@
         Password generator
       </h1>
       <p>
-        Create strong, secure passwords in seconds. This password generator lets you customize length, special characters, and numbers to meet your security needs. Save time, stay protected.
+        The password generator tool creates strong, secure, and customizable passwords to enhance your online security. You can choose the length and whether to include uppercase letters, numbers, and symbols. This tool is ideal for creating unique passwords for each of your accounts, protecting your personal data, and preventing cyberattacks. A strong password is the first line of defense against hacking attempts, and this generator makes it quick and effortless to get one that meets best practices. Save time, stay protected.
       </p>
     </v-row>
 

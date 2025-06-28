@@ -5,7 +5,7 @@
         Case Converter
       </h1>
       <p>
-        Instantly convert text into multiple formats: uppercase, lowercase, capitalized, camelCase, PascalCase, snake_case, kebab-case, flatcase, reversed, or even binary. Perfect for developers and writers who want fast and accurate formatting.
+        The case converter tool allows you to instantly change the letter casing of your text to various formats, such as uppercase, lowercase, capitalized case, and more. It's especially useful for developers formatting JSON or code, students preparing essays, and marketers ensuring consistency across titles and headers. With just a few clicks, you can correct the casing of entire documents, save time, and eliminate manual editing. This tool improves both readability and formatting precision, making it ideal for professional communication and digital content creation.
       </p>
     </v-row>
 

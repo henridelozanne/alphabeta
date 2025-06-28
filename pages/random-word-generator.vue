@@ -5,7 +5,7 @@
         Random word generator
       </h1>
       <p>
-        Use this free tool to generate random words of any length and vowel ratio. Great for games, creative writing, or just for fun!
+        This random word generator helps you instantly produce random words for creative writing, brainstorming, name generation, or language learning. You can set the word length and generate new ideas on the fly. It’s a valuable tool for writers with writer’s block, teachers creating vocabulary games, or anyone looking to expand their lexicon. With just one click, get inspiration in the form of fresh, unexpected words that can unlock creativity and enrich your writing. It’s also perfect for people looking for band names, project titles, or anything that needs a spark of originality — one random word could be the seed for your next great idea.
       </p>
     </v-row>
 

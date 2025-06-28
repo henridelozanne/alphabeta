@@ -28,11 +28,6 @@ export default defineNuxtConfig({
   },
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
-  routeRules: {
-    '/': {
-      redirect: '/random-word-generator'
-    }
-  },
   build: {
     transpile: ['vuetify']
   },

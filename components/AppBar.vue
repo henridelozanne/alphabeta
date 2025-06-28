@@ -1,9 +1,9 @@
 <template>
   <v-app-bar :elevation="2">
     <div class="v-toolbar-title">
-      <div class="v-toolbar-title__placeholder">
+      <NuxtLink class="v-toolbar-title__placeholder" to="/">
         Moditext
-      </div>
+      </NuxtLink>
     </div>
     <template v-if="mobile" #prepend>
       <v-app-bar-nav-icon @click="openMobileMenu" />

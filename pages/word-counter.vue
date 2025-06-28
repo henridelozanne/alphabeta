@@ -5,7 +5,7 @@
         Word counter
       </h1>
       <p>
-        This comprehensive text analyzer helps you understand your writing better by counting words, characters, lines, and spaces. It also tracks the frequency of any word or character you specify, and estimates the time needed to read your text silently or aloud based on average reading speeds. Use it to improve readability, prepare speeches, or optimize your writing.
+        This word and character counter helps you quickly analyze the length and structure of your content. Whether you're writing a tweet, a blog post, a meta description for SEO, or an academic paper, knowing your word count and character usage is essential. This tool not only provides the number of words and characters, but also lets you assess the balance and conciseness of your message. It’s a must-have for content creators, students, and digital marketers who need to meet precise limits and improve readability.
       </p>
     </v-row>
 
@@ -146,7 +146,7 @@ useHead({
   ]
 });
 
-const text : Ref<string> = ref('Lorem ipsum dolor sit amet. Et consequatur quibusdam in dolores fuga id quia facilis ex quae architecto aut quia rerum qui earum debitis. Qui quod mollitia et pariatur consequatur et consequatur enim non fuga commodi. Et odio nesciunt et quis voluptatibus aut explicabo aliquam ut doloremque expedita aut dolorem maiores.');
+const text : Ref<string> = ref('Word counters are essential tools for writers, editors, and content creators. They help you monitor the length of your content, improve readability, and stay within character or word limits.');
 
 const specificWordEnabled = ref(false);
 const specificCharacterEnabled = ref(false);

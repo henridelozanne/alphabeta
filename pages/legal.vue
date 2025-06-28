@@ -1,5 +1,9 @@
 <template>
   <v-container>
+    <v-row class="page-description">
+      <p>This page provides the legal information about this website, including publisher and hosting details, in compliance with applicable regulations.</p>
+    </v-row>
+
     <v-row class="section">
       <v-col cols="12">
         <h1 class="text-h4">

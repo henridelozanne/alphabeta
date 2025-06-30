@@ -44,6 +44,10 @@ if (route.path !== '/legal') {
       }
     ]
   });
+} else {
+  useHead({
+    meta: [{ name: 'robots', content: 'noindex' }]
+  });
 }
 
 useHead({

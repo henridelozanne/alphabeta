@@ -33,6 +33,25 @@
         <p><strong>Purpose of the website:</strong> Free online text tools with advertising</p>
       </v-col>
     </v-row>
+
+    <v-row class="section">
+      <h2 class="text-h5 mt-8">
+        Privacy Policy
+      </h2>
+      <p>
+        This website does not collect personal data without your consent. Any data collected through contact forms or email communication is used solely for responding to inquiries and is never shared with third parties.
+      </p>
+
+      <h2 class="text-h5 mt-8">
+        Cookies
+      </h2>
+      <p>
+        This website uses cookies provided by Google AdSense to serve personalized or non-personalized advertisements. These cookies may track your browsing activity. By using this site, you consent to the use of such cookies as governed by Google's policies.
+      </p>
+      <p>
+        You can manage or disable cookies directly from your browser settings. For more information on how Google uses your data, please refer to their <a href="https://policies.google.com/technologies/ads" target="_blank">advertising policies</a>.
+      </p>
+    </v-row>
   </v-container>
 </template>
 
@@ -40,7 +59,7 @@
 useHead({
   title: 'Moditext - Legal Notice',
   meta: [
-    { name: 'description', content: 'Legal notice and business information for Moditext, a website offering online text tools.' }
+    { name: 'description', content: 'Legal notice, privacy and cookie policy, and business information for Moditext, a website offering online text tools.' }
   ]
 });
 </script>

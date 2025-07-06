@@ -30,25 +30,15 @@
 </template>
 
 <script setup lang="ts">
-import { useRoute } from 'vue-router';
-
-const route = useRoute();
-
-if (route.path !== '/legal') {
-  useHead({
-    script: [
-      {
-        src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8604734799570647',
-        async: true,
-        crossorigin: 'anonymous'
-      }
-    ]
-  });
-} else {
-  useHead({
-    meta: [{ name: 'robots', content: 'noindex' }]
-  });
-}
+useHead({
+  script: [
+    {
+      src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8604734799570647',
+      async: true,
+      crossorigin: 'anonymous'
+    }
+  ]
+});
 
 useHead({
   script: [

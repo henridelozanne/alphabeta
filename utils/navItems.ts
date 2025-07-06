@@ -28,6 +28,11 @@ const navItems = [
     title: 'Legal notice',
     path: '/legal',
     icon: 'mdi-file-document-outline'
+  },
+  {
+    title: 'Privacy',
+    path: '/privacy',
+    icon: 'mdi-shield-lock-outline'
   }
 ];
 

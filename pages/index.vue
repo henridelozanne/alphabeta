@@ -2,9 +2,10 @@
   <v-container>
     <v-row class="page-description">
       <h1>Welcome to Moditext</h1>
-      <p>
-        Moditext offers a collection of free, fast, and easy-to-use online text tools for developers, writers, students, and creatives. Whether you need to convert case, count words, generate random ideas, or create strong passwords, our tools are built to save you time and effort — directly in your browser, with no signup required.
-      </p>
+      <p>Moditext offers a collection of free, fast, and easy-to-use online text tools for developers, writers, students, and creatives. Whether you need to convert case, count words, generate random ideas, or create strong passwords, our tools are built to save you time and effort — directly in your browser, with no signup required.</p>
+
+      <h2>What makes Moditext unique?</h2>
+      <p>Each tool is focused, lightweight, and designed for instant productivity. No clutter, no tracking, no distractions. Just pure utility for your writing, coding, or content tasks.</p>
     </v-row>
 
     <v-row>
@@ -117,5 +118,9 @@ const tools = [
     font-size: 17px;
     margin-right: 8px;
   }
+}
+
+h2 {
+  margin-top: 20px;
 }
 </style>

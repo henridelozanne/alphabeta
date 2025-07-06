@@ -1,12 +1,20 @@
 <template>
   <v-container>
     <v-row class="page-description">
-      <h1>
-        Case Converter
-      </h1>
-      <p>
-        The case converter tool allows you to instantly change the letter casing of your text to various formats, such as uppercase, lowercase, capitalized case, and more. It's especially useful for developers formatting JSON or code, students preparing essays, and marketers ensuring consistency across titles and headers. With just a few clicks, you can correct the casing of entire documents, save time, and eliminate manual editing. This tool improves both readability and formatting precision, making it ideal for professional communication and digital content creation.
-      </p>
+      <v-col cols="12">
+        <h1>Case Converter</h1>
+        <p>The case converter tool allows you to instantly change the letter casing of your text to various formats, such as uppercase, lowercase, capitalized case, and more. It's especially useful for developers formatting JSON or code, students preparing essays, and marketers ensuring consistency across titles and headers.</p>
+
+        <h2>Supported formats</h2>
+        <ul>
+          <li>UPPERCASE</li>
+          <li>lowercase</li>
+          <li>Capitalized Case</li>
+          <li>Sentence case</li>
+          <li>snake_case, kebab-case, etc.</li>
+        </ul>
+        <p>With just a few clicks, you can format your entire text block, saving time and avoiding manual edits.</p>
+      </v-col>
     </v-row>
 
     <v-row class="section">
@@ -175,5 +183,14 @@ onMounted(() => {
     background: linear-gradient(-20deg, #2b5876 0%, #4e4376 100%);
     color: white;
   }
+}
+
+h2 {
+  margin-top: 20px;
+}
+
+ul {
+  margin-bottom: 20px;
+  margin-left: 20px;
 }
 </style>

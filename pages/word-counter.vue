@@ -1,12 +1,27 @@
 <template>
   <v-container>
     <v-row class="page-description">
-      <h1>
-        Word counter
-      </h1>
-      <p>
-        This word and character counter helps you quickly analyze the length and structure of your content. Whether you're writing a tweet, a blog post, a meta description for SEO, or an academic paper, knowing your word count and character usage is essential. This tool not only provides the number of words and characters, but also lets you assess the balance and conciseness of your message. It’s a must-have for content creators, students, and digital marketers who need to meet precise limits and improve readability.
-      </p>
+      <v-col cols="12">
+        <h1>Word Counter</h1>
+        <p>
+          This tool lets you instantly count the number of words, characters, and paragraphs in your text. It's useful when writing tweets, blog posts, academic documents, or anything with length requirements.
+        </p>
+
+        <p>
+          You can also use it to:
+        </p>
+
+        <ul>
+          <li>Estimate reading time</li>
+          <li>Control keyword density for SEO</li>
+          <li>Convert word count to approximate page numbers</li>
+          <li>Meet limits on platforms like Twitter or ad titles</li>
+        </ul>
+
+        <p>
+          Paste your text and get instant insights.
+        </p>
+      </v-col>
     </v-row>
 
     <v-row class="section">
@@ -196,7 +211,12 @@ const aloudReadingTimeDisplay: ComputedRef<string> = computed(() => {
   margin-bottom: 15px;
 }
 
-.tooltip-trigger  {
-  // background:
+p, ul {
+  margin-bottom: 20px;
 }
+
+ul {
+  margin-left: 20px;
+}
+
 </style>

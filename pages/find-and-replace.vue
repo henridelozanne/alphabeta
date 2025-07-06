@@ -1,12 +1,13 @@
 <template>
   <v-container>
     <v-row class="page-description">
-      <h1>
-        Find and replace
-      </h1>
-      <p>
-        This find and replace tool lets you quickly search for specific words or phrases in a text and replace them with new ones. It's especially useful for editing documents, cleaning up data, or batch-correcting recurring typos. Whether you’re updating product names, fixing spelling errors, or making consistent replacements across long texts, this tool streamlines the task and saves time. It's fast, intuitive, and eliminates the need for complex manual corrections or regex knowledge.
-      </p>
+      <v-col>
+        <h1>Find and Replace</h1>
+        <p>This tool lets you search and replace words or phrases in your text with ease. It's ideal for editing large blocks of content, fixing typos, or cleaning up repeated terms.</p>
+
+        <h2>Example</h2>
+        <p>Replace all instances of “John” with “Jane” in one click. Useful for batch edits, content migration, or quick cleanup.</p>
+      </v-col>
     </v-row>
 
     <v-row class="section">
@@ -93,3 +94,9 @@ const replaced: Ref<string> = ref('dog');
 
 const result : ComputedRef<string> = computed(() => text.value.replaceAll(origin.value, replaced.value));
 </script>
+
+<style scoped>
+h2 {
+  margin-top: 20px;
+}
+</style>

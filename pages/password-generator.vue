@@ -1,12 +1,13 @@
 <template>
   <v-container class="password-generator">
     <v-row class="page-description">
-      <h1>
-        Password generator
-      </h1>
-      <p>
-        The password generator tool creates strong, secure, and customizable passwords to enhance your online security. You can choose the length and whether to include uppercase letters, numbers, and symbols. This tool is ideal for creating unique passwords for each of your accounts, protecting your personal data, and preventing cyberattacks. A strong password is the first line of defense against hacking attempts, and this generator makes it quick and effortless to get one that meets best practices. Save time, stay protected.
-      </p>
+      <v-col>
+        <h1>Password Generator</h1>
+        <p>Generate strong and secure passwords instantly. Choose your desired length and customize the use of uppercase letters, numbers, and special symbols. This tool helps you protect your online accounts with best-practice passwords.</p>
+
+        <h2>Why strong passwords matter</h2>
+        <p>Weak passwords are a common entry point for cyberattacks. A complex password created with this tool greatly improves your digital safety.</p>
+      </v-col>
     </v-row>
 
     <v-row class="result-wrapper section">
@@ -172,5 +173,9 @@ onMounted(() => {
       bottom: 10px;
     }
   }
+}
+
+h2 {
+  margin-top: 20px;
 }
 </style>

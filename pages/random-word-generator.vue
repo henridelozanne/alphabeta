@@ -5,7 +5,13 @@
         Random word generator
       </h1>
       <p>
-        This random word generator helps you instantly produce random words for creative writing, brainstorming, name generation, or language learning. You can set the word length and generate new ideas on the fly. It’s a valuable tool for writers with writer’s block, teachers creating vocabulary games, or anyone looking to expand their lexicon. With just one click, get inspiration in the form of fresh, unexpected words that can unlock creativity and enrich your writing. It’s also perfect for people looking for band names, project titles, or anything that needs a spark of originality — one random word could be the seed for your next great idea.
+        This random word generator helps you instantly produce random words for creative writing, brainstorming, name generation, or language learning. You can set the word length and generate new ideas on the fly. It’s a valuable tool for writers with writer’s block, teachers creating vocabulary games, or anyone looking to expand their lexicon.
+      </p>
+      <p>
+        With just one click, get inspiration in the form of fresh, unexpected words that can unlock creativity and enrich your writing. It’s also perfect for people looking for band names, project titles, or anything that needs a spark of originality — one random word could be the seed for your next great idea.
+      </p>
+      <p>
+        It’s also perfect for people looking for band names, project titles, or anything that needs a spark of originality — one random word could be the seed for your next great idea.
       </p>
     </v-row>
 
@@ -326,5 +332,9 @@ const deleteLocalStorage = () : void => {
 
 .v-input__details {
   display: none;
+}
+
+p {
+  margin-bottom: 20px;
 }
 </style>

@@ -33,16 +33,6 @@
 useHead({
   script: [
     {
-      src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8604734799570647',
-      async: true,
-      crossorigin: 'anonymous'
-    }
-  ]
-});
-
-useHead({
-  script: [
-    {
       async: true,
       src: 'https://www.googletagmanager.com/gtag/js?id=G-51QC7QPJ63'
     },

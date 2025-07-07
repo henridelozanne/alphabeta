@@ -61,6 +61,16 @@
 
 <script setup lang="ts">
 useHead({
+  script: [
+    {
+      src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8604734799570647',
+      async: true,
+      crossorigin: 'anonymous'
+    }
+  ]
+});
+
+useHead({
   title: 'Moditext - Password Generator',
   link: [
     {
